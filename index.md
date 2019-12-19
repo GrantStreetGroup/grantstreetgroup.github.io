@@ -17,3 +17,6 @@ Connect with us on
 [Twitter](https://twitter.com/grantstgroup),
 [Instagram](https://www.instagram.com/grantstreetgroup/),
 and [YouTube](https://www.youtube.com/channel/UCJYhAEXFmg1_bg6Z_SpQKtA?).
+
+Our [Contributing guide]({% link CONTRIBUTING.md %}) can help you
+help us make [our Open Source projects]({{ site.github.owner_url }}) better.
