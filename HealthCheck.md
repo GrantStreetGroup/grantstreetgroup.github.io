@@ -74,11 +74,11 @@ A health check checker implementation should return a data structure that can be
             {
                "id" : "subcheck_3",
                "status" : "CRITICAL",
-               "info" : "Check failed to do the thing it set out to do",
+               "info" : "Check failed to do the thing it set out to do"
             }
          ]
       }
-   ]
+   ],
    "tags" : [
       "my_app",
       "multi_check"
