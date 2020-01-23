@@ -19,6 +19,7 @@ Other useful code
 *   [HealthCheck::Diagnostic](https://MetaCPAN.org/pod/HealthCheck::Diagnostic) - Base class for writing HealthCheck Diagnostic Checks
     *   As well as [some documentation on writing one](https://MetaCPAN.org/pod/distribution/HealthCheck/writing_a_healthcheck_diagnostic.pod).
 *   [Plack::Middleware::HealthCheck](https://gsgpan.grantstreet.com/pod/GSG::Plack::Middleware::HealthCheck) - HealthChecks over the web
+    *   Note this implements the correct HTTP response statuses
 *   More [HealthCheck::Diagnostic checks on the MetaCPAN](https://MetaCPAN.org/search?q=HealthCheck%3A%3ADiagnostic)
 
 ### Checker Implementation Best Practices
@@ -28,6 +29,8 @@ The checker SHOULD summarize the “status” field, picking the worst severity 
 A checker SHOULD return the list of tags it checked. An individual check MAY return all the tags it has associated.
 
 A checker MUST timeout in a reasonable amount of time and return an appropriate response for not getting results. For example, some endpoints may be hit every ten seconds and expected response time is shorter than that.
+
+For HTTP(s) health checks, the HTTP response code MUST be a 200 if the app is in good health, and MUST be 503 in bad health. See also [Google's standard](https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http).
 
 Results
 -------
