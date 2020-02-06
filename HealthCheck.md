@@ -1,5 +1,5 @@
 ---
-title: Grantstreet Group HealthCheck Standard
+title: Grant Street Group HealthCheck Standard
 ---
 # {{ page.title }}
 
