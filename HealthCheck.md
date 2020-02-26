@@ -4,7 +4,7 @@ title: Grant Street Group HealthCheck Standard
 # {{ page.title }}
 
 A definition of the result format for the results of a HealthCheck for an application.
-Loosly based on the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf),
+Loosely based on the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf),
 with much simplification and the major addition of the "results" field that allows nesting results.
 These nested results provide much power to see a summary of the state and yet dig deeper into why something has failed.
 Tag support means you can query for just the features you are interested in and not have to wait for other results to be calculated.
@@ -17,7 +17,7 @@ Other useful code
 -----------------
 
 *   [HealthCheck::Diagnostic](https://MetaCPAN.org/pod/HealthCheck::Diagnostic) - Base class for writing HealthCheck Diagnostic Checks
-    *   As well as [some documentation on writing one](https://MetaCPAN.org/pod/distribution/HealthCheck/writing_a_healthcheck_diagnostic.pod).
+    *   As well as [some documentation on writing one](https://metacpan.org/pod/distribution/HealthCheck/lib/HealthCheck/WritingADiagnostic.pod).
 *   [Plack::Middleware::HealthCheck](https://gsgpan.grantstreet.com/pod/GSG::Plack::Middleware::HealthCheck) - HealthChecks over the web
     *   Note this implements the correct HTTP response statuses
 *   More [HealthCheck::Diagnostic checks on the MetaCPAN](https://MetaCPAN.org/search?q=HealthCheck%3A%3ADiagnostic)
