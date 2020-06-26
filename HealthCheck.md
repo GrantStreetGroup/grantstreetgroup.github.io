@@ -18,7 +18,7 @@ Other useful code
 
 *   [HealthCheck::Diagnostic](https://MetaCPAN.org/pod/HealthCheck::Diagnostic) - Base class for writing HealthCheck Diagnostic Checks
     *   As well as [some documentation on writing one](https://metacpan.org/pod/distribution/HealthCheck/lib/HealthCheck/WritingADiagnostic.pod).
-*   [Plack::Middleware::HealthCheck](https://gsgpan.grantstreet.com/pod/GSG::Plack::Middleware::HealthCheck) - HealthChecks over the web
+*   [Plack::Middleware::HealthCheck](https://metacpan.org/pod/Plack::Middleware::HealthCheck) - HealthChecks over the web
     *   Note this implements the correct HTTP response statuses
 *   More [HealthCheck::Diagnostic checks on the MetaCPAN](https://MetaCPAN.org/search?q=HealthCheck%3A%3ADiagnostic)
 
