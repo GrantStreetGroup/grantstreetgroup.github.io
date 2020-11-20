@@ -43,7 +43,7 @@ A health check checker implementation should return a data structure that can be
    "status" : "CRITICAL",
    "label" : "My App's Health Check",
    "info" : "Something has gone terribly wrong",
-   "timestamp" : "2001-02-03 04:05:06",
+   "timestamp" : "2001-02-03 04:05:06Z",
    "results" : [
       {
          "id" : "simple_check",
@@ -72,7 +72,7 @@ A health check checker implementation should return a data structure that can be
                "id" : "subcheck_2",
                "status" : "OK",
                "label" : "Before the dawn of time",
-               "timestamp" : "1969-12-31 12:59:59"
+               "timestamp" : "1969-12-31T12:59:59+00:00"
             },
             {
                "id" : "subcheck_3",
@@ -97,7 +97,8 @@ A health check checker implementation should return a data structure that can be
 | status | OK (0), WARNING (1), CRITICAL (2), UNKNOWN (3) | UNKNOWN | A string, the definition from the [Nagios Plugin Return Code Service State](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html). |
 | label | String | "id" field | Displayed to a human describing the check. |
 | info | String | "status" field | Displayed to a human describing the status. May include more detail than the status.  |
-| timestamp | [ISO8601 timestamp](https://en.wikipedia.org/wiki/ISO_8601) | timestamp of a "parent" result or a top-level result will default to the current time.  | The top-level result should fill this out when it is run. Checks that do caching of results should use the timestamp of the last time the result was updated.  |
+| timestamp | [RFC3339 timestamp](https://tools.ietf.org/html/rfc3339) | timestamp of a "parent" result or a top-level result will default to the current time.  | The top-level result should fill this out when it is run. Checks that do caching of results should use the timestamp of the last time the result was updated.
+ It is highly recommended that you stick with GMT, or the "Z"/+00:00 timezone for consistency.  RFC3339 is a subset of [ISO8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | results | List of additional check results | None | If this is an aggregate check that combines sub-checks, this can be a list of the results for each sub-check. Each result must comply with the constraints defined here. |
 | tags | Array of strings | None | A set of tags that can be used to classify the result. These can generally be filtered with a separate "tags" query from the check implementation.  |
 | data | A freeform structure | None | A freeform machine-readable set of data, providing additional details to the test. The structure and keys SHOULD be consistent if the same type of test is run multiple times.  |
