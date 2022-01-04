@@ -44,6 +44,7 @@ A health check checker implementation should return a data structure that can be
    "label" : "My App's Health Check",
    "info" : "Something has gone terribly wrong",
    "timestamp" : "2001-02-03 04:05:06Z",
+   "runbook" : "https://grantstreetgroup.github.io/HealthCheck.html",
    "results" : [
       {
          "id" : "simple_check",
@@ -63,6 +64,7 @@ A health check checker implementation should return a data structure that can be
          "id" : "aggregate_check",
          "status" : "CRITICAL",
          "label" : "A check that aggregates different problems",
+         "runbook" : "https://grantstreetgroup.github.io/HealthCheck.html",
          "results" : [
             {
                "id" : "subcheck_1",
@@ -99,6 +101,7 @@ A health check checker implementation should return a data structure that can be
 | info | String | "status" field | Displayed to a human describing the status. May include more detail than the status.  |
 | timestamp | [RFC3339 timestamp](https://tools.ietf.org/html/rfc3339) | timestamp of a "parent" result or a top-level result will default to the current time.  | The top-level result should fill this out when it is run. Checks that do caching of results should use the timestamp of the last time the result was updated.  It is highly recommended that you stick with GMT, or the "Z"/+00:00 timezone for consistency.  RFC3339 is a subset of [ISO8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | results | List of additional check results | None | If this is an aggregate check that combines sub-checks, this can be a list of the results for each sub-check. Each result must comply with the constraints defined here. |
+| runbook | A troubleshooting runbook link | None | A string of an URL that is linked to a troubleshooting runbook when healthcheck is not in OK status. |
 | tags | Array of strings | None | A set of tags that can be used to classify the result. These can generally be filtered with a separate "tags" query from the check implementation.  |
 | data | A freeform structure | None | A freeform machine-readable set of data, providing additional details to the test. The structure and keys SHOULD be consistent if the same type of test is run multiple times.  |
 
@@ -112,6 +115,6 @@ These are fields that are thought might be useful as standard fields, but in ord
 |------|-----|-------------|---------|-------|
 | None | severity | Known severity level | None | How important is this check. Expected to be a syslog severity level. How the result reader uses this information is implementation specific. |
 | None | facility | String | None | The type of check. Also from syslog, |
-| None | businessImpact | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link that a business person can follow to understand what the implications of this failing are. |
-| None | technicalSummary | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link describing what this is checking on a technical level. |
-| None | panicGuide | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link to instructions of what the prod supporter can do to resolve the failure.
+| None | businessImpact | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link that a business person can follow to understand what the implications of this failing are. The "runbook" is likely to replace this field. |
+| None | technicalSummary | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link describing what this is checking on a technical level. The "runbook" is likely to replace this field. |
+| None | panicGuide | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link to instructions of what the prod supporter can do to resolve the failure. The "runbook" is likely to replace this field. |
