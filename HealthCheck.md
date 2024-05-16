@@ -112,15 +112,3 @@ A health check checker implementation should return a data structure that can be
 | data | A freeform structure | None | A freeform machine-readable set of data, providing additional details to the test. The structure and keys SHOULD be consistent if the same type of test is run multiple times.  |
 
 Default values are what the result reader is expected to assume, not necessarily provided by the check implementation.
-
-### Proposed Result Fields
-
-These are fields that are thought might be useful as standard fields, but in order to keep things as simple as possible we are not putting them there until we find out if they are actually used. Please add any custom fields you may add to your implementation here, along with what code is using it.
-
-| Used | Key | Constraints | Default | Notes |
-|------|-----|-------------|---------|-------|
-| None | severity | Known severity level | None | How important is this check. Expected to be a syslog severity level. How the result reader uses this information is implementation specific. |
-| None | facility | String | None | The type of check. Also from syslog, |
-| None | businessImpact | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link that a business person can follow to understand what the implications of this failing are. The "runbook" is likely to replace this field. |
-| None | technicalSummary | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link describing what this is checking on a technical level. The "runbook" is likely to replace this field. |
-| None | panicGuide | URI | None | From the [FT Health Check Standard](https://github.com/Financial-Times/fettle/blob/master/FTHealthcheckstandard.pdf), a link to instructions of what the prod supporter can do to resolve the failure. The "runbook" is likely to replace this field. |
