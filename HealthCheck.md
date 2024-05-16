@@ -48,17 +48,20 @@ A health check checker implementation should return a data structure that can be
    "results" : [
       {
          "id" : "simple_check",
-         "status" : "OK"
+         "status" : "OK",
+         "runtime" : 0.012
       },
       {
          "id" : "named_check",
          "status" : "OK",
-         "label" : "Pretty Label"
+         "label" : "Pretty Label",
+         "runtime" : 0.027
       },
       {
          "id" : "timed_out",
          "status" : "UNKNOWN",
-         "info" : "Timed out after too many seconds"
+         "info" : "Timed out after too many seconds",
+         "runtime" : 15.009
       },
       {
          "id" : "aggregate_check",
@@ -81,9 +84,11 @@ A health check checker implementation should return a data structure that can be
                "status" : "CRITICAL",
                "info" : "Check failed to do the thing it set out to do"
             }
-         ]
+         ],
+         "runtime" : 2.087
       }
    ],
+   "runtime" : 17.377,
    "tags" : [
       "my_app",
       "multi_check"
@@ -101,6 +106,7 @@ A health check checker implementation should return a data structure that can be
 | info | String | "status" field | Displayed to a human describing the status. May include more detail than the status.  |
 | timestamp | [RFC3339 timestamp](https://tools.ietf.org/html/rfc3339) | timestamp of a "parent" result or a top-level result will default to the current time.  | The top-level result should fill this out when it is run. Checks that do caching of results should use the timestamp of the last time the result was updated.  It is highly recommended that you stick with GMT, or the "Z"/+00:00 timezone for consistency.  RFC3339 is a subset of [ISO8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | results | List of additional check results | None | If this is an aggregate check that combines sub-checks, this can be a list of the results for each sub-check. Each result must comply with the constraints defined here. |
+| runtime | Float (any precision) | None; may be auto-calculated at top-level | The amount of time it took to run the check, in seconds. Individual results can have their own individual runtimes. The checks SHOULD NOT use cached values, and only reflect the real amount of time it took to run. Checks could be ran in parallel, so summarizing runtimes for the parent check may not be appropriate, and parent checks should use their own timers. |
 | runbook | A troubleshooting runbook link | None | A string of an URL that is linked to a troubleshooting runbook when healthcheck is not in OK status. |
 | tags | Array of strings | None | A set of tags that can be used to classify the result. These can generally be filtered with a separate "tags" query from the check implementation.  |
 | data | A freeform structure | None | A freeform machine-readable set of data, providing additional details to the test. The structure and keys SHOULD be consistent if the same type of test is run multiple times.  |
